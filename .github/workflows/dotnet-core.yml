@@ -1,0 +1,22 @@
+name: .NET Core
+
+on:
+  watch:
+    types: [started]
+  schedule:
+    - cron:  '0 12,23 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@main
+    - name: Run
+      run: dotnet run
+      env: 
+        CITY_ID: ${{ secrets.CITY_ID }}
+        EMAIL_CONF: ${{ secrets.EMAIL_CONF }}
+        FROM_ADDRESS: ${{ secrets.FROM_ADDRESS }}
+        TO_ADDRESS: ${{ secrets.TO_ADDRESS }}
