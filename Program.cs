@@ -1,8 +1,4 @@
-﻿using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using TimeZoneConverter;
+﻿using System.Text.Json;
 using Util.Mail;
 
 namespace WeatherNotify
@@ -32,7 +28,7 @@ namespace WeatherNotify
             }
 
             string dayInfo = "今日";
-            DateTime nowTime_CN = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TZConvert.GetTimeZoneInfo("China Standard Time"));
+            DateTime nowTime_CN = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, TimeZoneInfo.FindSystemTimeZoneById("China Standard Time"));
             if (nowTime_CN.Hour > 12)
             {
                 nowTime_CN = nowTime_CN.AddDays(1d);
